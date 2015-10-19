@@ -175,8 +175,6 @@ var QRCodeScanner = {
 	window.pauseVideoBound = pauseVideo.bind(this);
 	window.playVideoBound = playVideo.bind(this);
 
-	console.log("SCANNING, BITCH");
-
 	if (this.context != null) {
 	    this.context.clearRect(0, 0, this.width, this.height);
 	    this.context.drawImage(this.video, 0, 0, this.width, this.height);
@@ -194,7 +192,6 @@ var QRCodeScanner = {
 	    }
 	}
 
-	console.log("EXITING SCAN");
 	setTimeout(this.scanQRCode.bind(this), 1000);
     }
 };
