@@ -37,6 +37,7 @@ var QRCodeScanner = {
 		    var lastName = registrant.get('lastName');
 		    msg.innerHTML = firstName + " " + lastName;
 		    console.log("SAVING");
+		    signInObject.set('email', registrant.get('emailAddress'));
 		    signInObject.set('registrant', registrant);
 		    return signInObject.save(null);
 		}
