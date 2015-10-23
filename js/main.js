@@ -58,7 +58,8 @@ var QRCodeScanner = {
 		    return signInObject.save(null);
 		}
 		else {
-		    msg.innerHTML = 'ERROR';
+		    msg.innerHTML = registrant.get('firstName') + ' ' +
+			registrant.get('lastName') + ' is not registered.';
 		    return Parse.Promise.error("User is not a registrant.");
 		}
 	    }).then(function signInUser(signInObject) {
