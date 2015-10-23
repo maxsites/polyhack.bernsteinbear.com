@@ -8,6 +8,22 @@ function playVideo() {
     this.video.play();
 }
 
+function signInNormal() {
+    document.body.setAttribute("class", "fade-to-normal");
+}
+
+function signInOK() {
+    document.body.setAttribute("class", "fade-to-ok");
+    setTimeout(signInNormal, 750);
+    playVideoBound();
+}
+
+function signInError() {
+    document.body.setAttribute("class", "fade-to-error");
+    setTimeout(signInNormal, 750);
+    playVideoBound();
+}
+
 var QRCodeScanner = {
     canvas: document.getElementById("qr-canvas"),
     video: document.getElementById('v'),
@@ -46,12 +62,10 @@ var QRCodeScanner = {
 		    return Parse.Promise.error("User is not a registrant.");
 		}
 	    }).then(function signInUser(signInObject) {
-		document.body.style.background = '#5cb85c';
-		playVideoBound();
+		signInOK();
 		that.lastMsg = txt;
 	    }, function signInError(signInObject, error) {
-		document.body.style.background = '#d9534f';
-		playVideoBound();
+		signInError();
 		that.lastMsg = txt;
 	    });
 	}
